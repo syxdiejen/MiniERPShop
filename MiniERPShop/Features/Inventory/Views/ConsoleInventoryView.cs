@@ -1,6 +1,6 @@
-﻿using MiniERPShop.Models;
+﻿using MiniERPShop.Features.Inventory.Models;
 
-namespace MiniERPShop.Views;
+namespace MiniERPShop.Features.Inventory.Views;
 
 public class ConsoleInventoryView : IInventoryView
 {

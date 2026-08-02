@@ -1,8 +1,9 @@
-﻿using MiniERPShop.Models;
-using MiniERPShop.Services;
-using MiniERPShop.Views;
+﻿using MiniERPShop.Features.Inventory.Models;
+using MiniERPShop.Features.Inventory.Services;
+using MiniERPShop.Features.Inventory.Views;
+using MiniERPShop.Game;
 
-namespace MiniERPShop.Presenters;
+namespace MiniERPShop.Features.Inventory.Presenters;
 
 public class InventoryPresenter
 {

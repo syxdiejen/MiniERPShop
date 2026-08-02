@@ -1,4 +1,4 @@
-﻿namespace MiniERPShop.Models;
+﻿namespace MiniERPShop.Features.Inventory.Models;
 
     public class Product
     {

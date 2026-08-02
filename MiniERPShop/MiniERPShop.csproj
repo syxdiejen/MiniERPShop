@@ -7,4 +7,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Inventory\DTOs\" />
+    <Folder Include="Features\Report\DTOs\" />
+    <Folder Include="Features\Report\Models\" />
+    <Folder Include="Features\Sales\DTOs\" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,6 @@
-﻿using MiniERPShop.Models;
+﻿using MiniERPShop.Features.Inventory.Models;
 
-namespace MiniERPShop.Services;
+namespace MiniERPShop.Features.Inventory.Services;
 
 public class InventoryService
 {

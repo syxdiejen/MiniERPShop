@@ -1,4 +1,4 @@
-﻿using MiniERPShop.Models;
+﻿using MiniERPShop.Features.Inventory.Models;
 
 public class OrderItem
 {

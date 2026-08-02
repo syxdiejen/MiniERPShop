@@ -1,7 +1,15 @@
-﻿using MiniERPShop.Models;
-using MiniERPShop.Presenters;
-using MiniERPShop.Services;
-using MiniERPShop.Views;
+﻿using MiniERPShop.Features.Inventory.Models;
+using MiniERPShop.Features.Inventory.Presenters;
+using MiniERPShop.Features.Inventory.Services;
+using MiniERPShop.Features.Inventory.Views;
+using MiniERPShop.Features.Report.Presenters;
+using MiniERPShop.Features.Report.Services;
+using MiniERPShop.Features.Report.Views;
+using MiniERPShop.Features.Sales.Presenters;
+using MiniERPShop.Features.Sales.Services;
+using MiniERPShop.Features.Sales.Views;
+
+using MiniERPShop.Game;
 
 List<Product> products =
 [
@@ -39,11 +47,9 @@ List<Product> products =
 
 GameState gameState = new();
 
-InventoryService inventoryService =
-    new(products);
+InventoryService inventoryService = new(products);
 
-IInventoryView inventoryView =
-    new ConsoleInventoryView();
+IInventoryView inventoryView = new ConsoleInventoryView();
 
 InventoryPresenter inventoryPresenter =
     new(
@@ -51,6 +57,27 @@ InventoryPresenter inventoryPresenter =
         inventoryService,
         gameState
     );
+
+SalesService salesService =
+    new(
+        inventoryService,
+        gameState);
+
+ISalesView salesView =
+    new ConsoleSalesView();
+
+SalesPresenter salesPresenter =
+    new(
+        salesView,
+        salesService);
+
+ReportServices reportServices = new(gameState);
+
+IReportView reportView = new ConsoleReportView();
+
+ReportPresenter reportPresenter = new(
+        reportView,
+        reportServices);
 
 bool isRunning = true;
 
@@ -63,6 +90,9 @@ while (isRunning)
     Console.WriteLine();
     Console.WriteLine("1. Xem kho");
     Console.WriteLine("2. Nhap hang");
+    Console.WriteLine("3. Bán hàng");
+    Console.WriteLine("4. Báo cáo");
+    Console.WriteLine("5. Sang ngày mới");
     Console.WriteLine("0. Thoat");
     Console.Write("Lua chon: ");
 
@@ -76,6 +106,18 @@ while (isRunning)
 
         case "2":
             inventoryPresenter.PurchaseStock();
+            break;
+
+        case "3":
+            salesPresenter.SellProduct();
+            break;
+
+        case "4":
+            reportPresenter.ShowTodayReport();
+            break;
+
+        case "5":
+            reportServices.NextDay();
             break;
 
         case "0":
