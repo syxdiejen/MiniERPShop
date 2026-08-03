@@ -8,11 +8,13 @@ using MiniERPShop.Features.Report.Views;
 using MiniERPShop.Features.Sales.Presenters;
 using MiniERPShop.Features.Sales.Services;
 using MiniERPShop.Features.Sales.Views;
-using MiniERPShop.Features.Purchasing.DTOs;
-using MiniERPShop.Features.Purchasing.Models;
 using MiniERPShop.Features.Purchasing.Presenters;
 using MiniERPShop.Features.Purchasing.Services;
 using MiniERPShop.Features.Purchasing.Views;
+using MiniERPShop.Features.Suppliers.Models;
+using MiniERPShop.Features.Suppliers.Services;
+using MiniERPShop.Features.Suppliers.Views;
+using MiniERPShop.Features.Suppliers.Presenters;
 
 using MiniERPShop.Game;
 
@@ -50,6 +52,36 @@ List<Product> products =
     }
 ];
 
+List<Supplier> suppliers =
+[
+    new Supplier
+    {
+        Id = 1,
+        Code = "NCC001",
+        Name = "Coca Viet Nam",
+        Phone = "0900000001",
+        Address = "Ha Noi"
+    },
+
+    new Supplier
+    {
+        Id = 2,
+        Code = "NCC002",
+        Name = "Acecook",
+        Phone = "0900000002",
+        Address = "Ho Chi Minh"
+    },
+
+    new Supplier
+    {
+        Id = 3,
+        Code = "NCC003",
+        Name = "Vinamilk",
+        Phone = "0900000003",
+        Address = "Da Nang"
+    }
+];
+
 GameState gameState = new();
 
 InventoryService inventoryService = new(products);
@@ -67,6 +99,17 @@ SalesService salesService =
     new(
         inventoryService,
         gameState);
+
+SupplierService supplierService =
+    new(suppliers);
+
+ISupplierView supplierView =
+    new ConsoleSupplierView();
+
+SupplierPresenter supplierPresenter =
+    new(
+        supplierView,
+        supplierService);
 
 ISalesView salesView =
     new ConsoleSalesView();
@@ -102,10 +145,11 @@ while (isRunning)
     Console.WriteLine($"Tien mat: {gameState.Cash:N0} VND");
     Console.WriteLine();
     Console.WriteLine("1. Xem kho");
-    Console.WriteLine("2. Nhap hang");
-    Console.WriteLine("3. Bán hàng");
-    Console.WriteLine("4. Báo cáo");
-    Console.WriteLine("5. Sang ngày mới");
+    Console.WriteLine("2. Xem nha cung cap");
+    Console.WriteLine("3. Nhap hang");
+    Console.WriteLine("4. Bán hàng");
+    Console.WriteLine("5. Báo cáo");
+    Console.WriteLine("6. Sang ngày mới");
     Console.WriteLine("0. Thoat");
     Console.Write("Lua chon: ");
 
@@ -118,18 +162,26 @@ while (isRunning)
             break;
 
         case "2":
+            supplierPresenter.DisplaySuppliers();
+            break;
+
+
+        case "3":
             purchasePresenter.PurchaseProduct();
             break;
 
-        case "3":
+
+        case "4":
             salesPresenter.SellProduct();
             break;
 
-        case "4":
+
+        case "5":
             reportPresenter.ShowTodayReport();
             break;
 
-        case "5":
+
+        case "6":
             reportServices.NextDay();
             break;
 

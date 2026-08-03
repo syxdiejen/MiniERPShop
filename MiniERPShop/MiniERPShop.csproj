@@ -10,7 +10,6 @@
   <ItemGroup>
     <Folder Include="DTOs\" />
     <Folder Include="Features\Inventory\DTOs\" />
-    <Folder Include="Features\NewFolder\" />
     <Folder Include="Features\Report\Models\" />
     <Folder Include="Features\Sales\DTOs\" />
   </ItemGroup>
