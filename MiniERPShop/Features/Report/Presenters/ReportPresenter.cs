@@ -1,4 +1,4 @@
-﻿using MiniERPShop.DTOs;
+﻿using MiniERPShop.Features.Report.DTOs;
 using MiniERPShop.Features.Report.Services;
 using MiniERPShop.Features.Report.Views;
 

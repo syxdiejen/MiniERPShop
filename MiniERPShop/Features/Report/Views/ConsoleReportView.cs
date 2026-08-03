@@ -1,4 +1,4 @@
-﻿using MiniERPShop.DTOs;
+﻿using MiniERPShop.Features.Report.DTOs;
 
 namespace MiniERPShop.Features.Report.Views;
 public class ConsoleReportView : IReportView
@@ -21,7 +21,8 @@ public class ConsoleReportView : IReportView
         Console.WriteLine("-----------------------------------------");
 
         Console.WriteLine($"Doanh thu           : {report.Revenue:N0} VND");
-        Console.WriteLine($"Gia von             : {report.Cost:N0} VND");
+        Console.WriteLine($"Tiền nhập hàng      : {report.PurchaseAmount:N0} VND");
+        Console.WriteLine($"Gia von             : {report.CostOfGoodsSold:N0} VND");
         Console.WriteLine($"Loi nhuan           : {report.Profit:N0} VND");
 
         Console.WriteLine("-----------------------------------------");

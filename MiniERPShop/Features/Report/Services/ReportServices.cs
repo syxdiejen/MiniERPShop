@@ -1,4 +1,4 @@
-﻿using MiniERPShop.DTOs;
+﻿using MiniERPShop.Features.Report.DTOs;
 using MiniERPShop.Game;
 
 namespace MiniERPShop.Features.Report.Services;
@@ -24,7 +24,8 @@ public class ReportServices
             CurrentDay = _gameState.CurrentDay,
             Cash = _gameState.Cash,
             Revenue = _gameState.Today.Revenue,
-            Cost = _gameState.Today.Cost,
+            PurchaseAmount = _gameState.Today.PurchaseAmount,
+            CostOfGoodsSold = _gameState.Today.CostOfGoodsSold,
             Profit = _gameState.Today.Profit,
             SuccessfulOrders = _gameState.Today.SuccessfulOrders,
             FailedOrders = _gameState.Today.FailedOrders

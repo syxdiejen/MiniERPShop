@@ -69,7 +69,7 @@ public class SalesService
 
         _gameState.Cash += revenue;
         _gameState.Today.Revenue += revenue;
-        _gameState.Today.Cost += cost;
+        _gameState.Today.CostOfGoodsSold += cost;
         _gameState.Today.SuccessfulOrders++;
 
         return OperationResult.Ok(

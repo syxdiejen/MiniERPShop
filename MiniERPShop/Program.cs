@@ -8,6 +8,11 @@ using MiniERPShop.Features.Report.Views;
 using MiniERPShop.Features.Sales.Presenters;
 using MiniERPShop.Features.Sales.Services;
 using MiniERPShop.Features.Sales.Views;
+using MiniERPShop.Features.Purchasing.DTOs;
+using MiniERPShop.Features.Purchasing.Models;
+using MiniERPShop.Features.Purchasing.Presenters;
+using MiniERPShop.Features.Purchasing.Services;
+using MiniERPShop.Features.Purchasing.Views;
 
 using MiniERPShop.Game;
 
@@ -79,6 +84,14 @@ ReportPresenter reportPresenter = new(
         reportView,
         reportServices);
 
+PurchaseService purchaseService = new(inventoryService, gameState);
+
+IPurchaseView purchaseView = new ConsolePurchaseView();
+
+PurchasePresenter purchasePresenter = new(
+    purchaseView,
+    purchaseService);
+
 bool isRunning = true;
 
 while (isRunning)
@@ -105,7 +118,7 @@ while (isRunning)
             break;
 
         case "2":
-            inventoryPresenter.PurchaseStock();
+            purchasePresenter.PurchaseProduct();
             break;
 
         case "3":
